@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const AddWork = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -38,7 +40,7 @@ const AddWork = () => {
     }
 
     try {
-      await axios.post('https://portfolio-ashik-backend.onrender.com/add-post', data, {
+      await axios.post(`${BASE_URL}/add-post`, data, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

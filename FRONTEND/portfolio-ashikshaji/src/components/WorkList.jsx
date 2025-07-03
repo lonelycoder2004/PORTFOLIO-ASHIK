@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 
 const WorkList = () => {
   const [works, setWorks] = useState([]);
@@ -9,7 +11,7 @@ const WorkList = () => {
   useEffect(() => {
     const fetchWorks = async () => {
       try {
-        const response = await axios.get('https://portfolio-ashik-backend.onrender.com/get-posts');
+        const response = await axios.get(`${BASE_URL}/get-posts`);
         setWorks(response.data.projects);
       } catch (error) {
         console.error('Error fetching works:', error);
@@ -24,7 +26,7 @@ const WorkList = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this project?')) {
       try {
-        await axios.delete(`https://portfolio-ashik-backend.onrender.com/delete-post/${id}`);
+        await axios.delete(`${BASE_URL}/delete-post/${id}`);
         setWorks(works.filter(work => work._id !== id));
       } catch (error) {
         console.error('Error deleting project:', error);
@@ -53,7 +55,7 @@ const WorkList = () => {
           <div key={work._id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
             {work.image && (
               <img 
-                src={`https://portfolio-ashik-backend.onrender.com/uploads/${work.image}`} 
+                src={`${BASE_URL}/uploads/${work.image}`} 
                 alt={work.title} 
                 className="w-full h-48 object-cover"
               />

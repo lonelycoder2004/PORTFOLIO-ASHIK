@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const EditWork = () => {
   const { id } = useParams();
@@ -19,7 +20,7 @@ const EditWork = () => {
   useEffect(() => {
     const fetchWork = async () => {
       try {
-        const response = await axios.get(`https://portfolio-ashik-backend.onrender.com/get-posts`);
+        const response = await axios.get(`${BASE_URL}/get-posts`);
         const work = response.data.projects.find(w => w._id === id);
         if (work) {
           setFormData({
@@ -64,7 +65,7 @@ const EditWork = () => {
     }
 
     try {
-      await axios.put(`https://portfolio-ashik-backend.onrender.com/update-post/${id}`, data, {
+      await axios.put(`${BASE_URL}/update-post/${id}`, data, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -131,7 +132,7 @@ const EditWork = () => {
           <label className="block text-gray-700 mb-2">Current Image</label>
           {formData.currentImage && (
             <img 
-              src={`https://portfolio-ashik-backend.onrender.com/uploads/${formData.currentImage}`} 
+              src={`${BASE_URL}/uploads/${formData.currentImage}`} 
               alt="Current" 
               className="h-32 mb-2"
             />
