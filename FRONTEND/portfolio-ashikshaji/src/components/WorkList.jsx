@@ -9,7 +9,7 @@ const WorkList = () => {
   useEffect(() => {
     const fetchWorks = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/get-posts');
+        const response = await axios.get('https://portfolio-ashik-backend.onrender.com/get-posts');
         setWorks(response.data.projects);
       } catch (error) {
         console.error('Error fetching works:', error);
@@ -24,7 +24,7 @@ const WorkList = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this project?')) {
       try {
-        await axios.delete(`http://localhost:4000/delete-post/${id}`);
+        await axios.delete(`https://portfolio-ashik-backend.onrender.com/delete-post/${id}`);
         setWorks(works.filter(work => work._id !== id));
       } catch (error) {
         console.error('Error deleting project:', error);
@@ -53,7 +53,7 @@ const WorkList = () => {
           <div key={work._id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
             {work.image && (
               <img 
-                src={`http://localhost:4000/uploads/${work.image}`} 
+                src={`https://portfolio-ashik-backend.onrender.com/uploads/${work.image}`} 
                 alt={work.title} 
                 className="w-full h-48 object-cover"
               />

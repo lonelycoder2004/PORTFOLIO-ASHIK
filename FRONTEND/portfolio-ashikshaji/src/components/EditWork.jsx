@@ -19,7 +19,7 @@ const EditWork = () => {
   useEffect(() => {
     const fetchWork = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/get-posts`);
+        const response = await axios.get(`https://portfolio-ashik-backend.onrender.com/get-posts`);
         const work = response.data.projects.find(w => w._id === id);
         if (work) {
           setFormData({
@@ -64,7 +64,7 @@ const EditWork = () => {
     }
 
     try {
-      await axios.put(`http://localhost:4000/update-post/${id}`, data, {
+      await axios.put(`https://portfolio-ashik-backend.onrender.com/update-post/${id}`, data, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -131,7 +131,7 @@ const EditWork = () => {
           <label className="block text-gray-700 mb-2">Current Image</label>
           {formData.currentImage && (
             <img 
-              src={`http://localhost:4000/uploads/${formData.currentImage}`} 
+              src={`https://portfolio-ashik-backend.onrender.com/uploads/${formData.currentImage}`} 
               alt="Current" 
               className="h-32 mb-2"
             />

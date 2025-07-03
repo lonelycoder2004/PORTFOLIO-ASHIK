@@ -10,13 +10,13 @@ function Projects() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/get-posts");
+        const response = await axios.get("https://portfolio-ashik-backend.onrender.com/get-posts");
         // Transform the data to match your frontend structure
         const formattedProjects = response.data.projects.map((project) => ({
           id: project._id,
           title: project.title,
           description: project.description,
-          image: `http://localhost:4000/uploads/${project.image}`,
+          image: `https://portfolio-ashik-backend.onrender.com/uploads/${project.image}`,
           tags: project.tags,
           demoUrl: project.demoUrl,
           githubUrl: project.githubUrl,

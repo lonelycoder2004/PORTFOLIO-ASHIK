@@ -38,7 +38,7 @@ const AddWork = () => {
     }
 
     try {
-      await axios.post('http://localhost:4000/add-post', data, {
+      await axios.post('https://portfolio-ashik-backend.onrender.com/add-post', data, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

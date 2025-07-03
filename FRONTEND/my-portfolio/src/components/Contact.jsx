@@ -26,7 +26,7 @@ const handleSubmit = async (e) => {
   setIsSubmitting(true);
 
   try {
-    const response = await axios.post('http://localhost:4000/contact', formData, {
+    const response = await axios.post('https://portfolio-ashik-backend.onrender.com/contact', formData, {
       headers: {
         'Content-Type': 'application/json',
       }
